@@ -1,6 +1,10 @@
+import torch
+from torch import nn
+import numpy as np
+import torch.nn.functional as F
 from torch.nn.modules.conv import _ConvNd
 from torch.nn.modules.utils import _pair
-
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 class GaborConv2d(_ConvNd):
 
     def __init__(self, in_channels, out_channels, kernel_size, device="cpu", stride=1,
